@@ -1,0 +1,11 @@
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe.config
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.pdb
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Menú.resources
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Properties.Resources.resources
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.GenerateResource.Cache
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.exe
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.pdb
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Calculadora.resources
+C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Información.resources
