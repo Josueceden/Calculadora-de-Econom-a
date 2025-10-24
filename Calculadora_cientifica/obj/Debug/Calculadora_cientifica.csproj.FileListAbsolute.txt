@@ -9,3 +9,16 @@ C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug
 C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.pdb
 C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Calculadora.resources
 C:\Users\USUARIO\Desktop\Calculadora_cientifica\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Información.resources
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe.config
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.pdb
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.AssemblyReference.cache
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.exe.config
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Calculadora.resources
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Menú.resources
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Información.resources
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Properties.Resources.resources
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.GenerateResource.cache
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.CoreCompileInputs.cache
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.exe
+C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.pdb

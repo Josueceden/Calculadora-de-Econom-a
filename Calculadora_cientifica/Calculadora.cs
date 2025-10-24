@@ -17,9 +17,7 @@ namespace Calculadora_cientifica
             InitializeComponent();
         }
 
-        
-
-        private void label1_Click(object sender, EventArgs e)
+        private void Volver_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -122,15 +120,14 @@ namespace Calculadora_cientifica
         private void Equal_Click(object sender, EventArgs e)
         {
             String Calcular = Pantalla.Text;
-            Calcular = Calcular.Replace(",", ".");//Esto evita que cuando
+            Calcular = Calcular.Replace(",", ".");
             try
             {
-                
                 DataTable proceso = new DataTable();
-                var resultado = proceso.Compute(Calcular, null);//Aquí se realiza la operación que se guardo en la variable Calcular, que es lo que aparece en la Pantalla
+                var resultado = proceso.Compute(Calcular, null);
                 Pantalla.Text = resultado.ToString();
             }
-            catch 
+            catch
             {
                 Pantalla.Text = "ERROR";
             }
@@ -143,7 +140,7 @@ namespace Calculadora_cientifica
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            if (Pantalla.Text.Length > 0) 
+            if (Pantalla.Text.Length > 0)
             {
                 String op_actual = Pantalla.Text;
                 Pantalla.Text = op_actual.Substring(0, op_actual.Length - 1);
@@ -152,30 +149,29 @@ namespace Calculadora_cientifica
 
         private void Calculadora_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == ',') 
+            if (e.KeyChar == ',')
             {
                 e.Handled = true;
-                Pantalla.Text = ".";
+                Pantalla.Text += ".";
                 Pantalla.SelectionStart = Pantalla.Text.Length;
             }
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            Menú menu = new Menú();
-            menu.Show();
-            this.Hide();
-        }
-
-        private void Pantalla_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Calculadora_Load(object sender, EventArgs e)
         {
+            this.Text = "Calculadora Financiera";
+        }
 
+        private void Pantalla_TextChanged(object sender, EventArgs e)
+        {
+            // Auto-scroll to the right
+            Pantalla.SelectionStart = Pantalla.Text.Length;
+            Pantalla.ScrollToCaret();
+        }
+
+        private void Cerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
