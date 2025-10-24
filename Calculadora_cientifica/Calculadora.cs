@@ -173,7 +173,9 @@ namespace Calculadora_cientifica
 
         }
 
+        private void Calculadora_Load(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

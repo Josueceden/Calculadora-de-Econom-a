@@ -59,7 +59,7 @@
             // Pantalla
             // 
             this.Pantalla.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.Pantalla.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Pantalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Pantalla.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Pantalla.Location = new System.Drawing.Point(21, 36);
             this.Pantalla.Multiline = true;
@@ -71,7 +71,7 @@
             // 
             // one
             // 
-            this.one.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.one.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.one.Location = new System.Drawing.Point(21, 185);
             this.one.Name = "one";
             this.one.Size = new System.Drawing.Size(50, 36);
@@ -82,7 +82,7 @@
             // 
             // two
             // 
-            this.two.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.two.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.two.Location = new System.Drawing.Point(77, 185);
             this.two.Name = "two";
             this.two.Size = new System.Drawing.Size(50, 36);
@@ -93,7 +93,7 @@
             // 
             // three
             // 
-            this.three.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.three.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.three.Location = new System.Drawing.Point(133, 185);
             this.three.Name = "three";
             this.three.Size = new System.Drawing.Size(50, 36);
@@ -104,7 +104,7 @@
             // 
             // Delete
             // 
-            this.Delete.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Delete.Location = new System.Drawing.Point(189, 185);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(50, 36);
@@ -115,7 +115,7 @@
             // 
             // Del_Total
             // 
-            this.Del_Total.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Del_Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Del_Total.Location = new System.Drawing.Point(245, 185);
             this.Del_Total.Name = "Del_Total";
             this.Del_Total.Size = new System.Drawing.Size(50, 36);
@@ -126,7 +126,7 @@
             // 
             // Divide
             // 
-            this.Divide.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Divide.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Divide.Location = new System.Drawing.Point(245, 227);
             this.Divide.Name = "Divide";
             this.Divide.Size = new System.Drawing.Size(50, 36);
@@ -137,7 +137,7 @@
             // 
             // By
             // 
-            this.By.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.By.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.By.Location = new System.Drawing.Point(189, 227);
             this.By.Name = "By";
             this.By.Size = new System.Drawing.Size(50, 36);
@@ -148,7 +148,7 @@
             // 
             // Six
             // 
-            this.Six.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Six.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Six.Location = new System.Drawing.Point(133, 227);
             this.Six.Name = "Six";
             this.Six.Size = new System.Drawing.Size(50, 36);
@@ -159,7 +159,7 @@
             // 
             // Five
             // 
-            this.Five.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Five.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Five.Location = new System.Drawing.Point(77, 227);
             this.Five.Name = "Five";
             this.Five.Size = new System.Drawing.Size(50, 36);
@@ -170,7 +170,7 @@
             // 
             // Four
             // 
-            this.Four.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Four.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Four.Location = new System.Drawing.Point(21, 227);
             this.Four.Name = "Four";
             this.Four.Size = new System.Drawing.Size(50, 36);
@@ -181,7 +181,7 @@
             // 
             // Rest
             // 
-            this.Rest.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Rest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Rest.Location = new System.Drawing.Point(245, 269);
             this.Rest.Name = "Rest";
             this.Rest.Size = new System.Drawing.Size(50, 36);
@@ -192,7 +192,7 @@
             // 
             // plus
             // 
-            this.plus.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.plus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.plus.Location = new System.Drawing.Point(189, 269);
             this.plus.Name = "plus";
             this.plus.Size = new System.Drawing.Size(50, 36);
@@ -203,7 +203,7 @@
             // 
             // nine
             // 
-            this.nine.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.nine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.nine.Location = new System.Drawing.Point(133, 269);
             this.nine.Name = "nine";
             this.nine.Size = new System.Drawing.Size(50, 36);
@@ -214,7 +214,7 @@
             // 
             // Eight
             // 
-            this.Eight.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Eight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Eight.Location = new System.Drawing.Point(77, 269);
             this.Eight.Name = "Eight";
             this.Eight.Size = new System.Drawing.Size(50, 36);
@@ -225,7 +225,7 @@
             // 
             // Seven
             // 
-            this.Seven.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Seven.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Seven.Location = new System.Drawing.Point(21, 269);
             this.Seven.Name = "Seven";
             this.Seven.Size = new System.Drawing.Size(50, 36);
@@ -236,7 +236,7 @@
             // 
             // Equal
             // 
-            this.Equal.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Equal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Equal.Location = new System.Drawing.Point(133, 311);
             this.Equal.Name = "Equal";
             this.Equal.Size = new System.Drawing.Size(162, 36);
@@ -247,7 +247,7 @@
             // 
             // Punto
             // 
-            this.Punto.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Punto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Punto.Location = new System.Drawing.Point(77, 311);
             this.Punto.Name = "Punto";
             this.Punto.Size = new System.Drawing.Size(50, 36);
@@ -258,7 +258,7 @@
             // 
             // Zero
             // 
-            this.Zero.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Zero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Zero.Location = new System.Drawing.Point(21, 311);
             this.Zero.Name = "Zero";
             this.Zero.Size = new System.Drawing.Size(50, 36);
@@ -269,7 +269,7 @@
             // 
             // opcion
             // 
-            this.opcion.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.opcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.opcion.Location = new System.Drawing.Point(245, 143);
             this.opcion.Name = "opcion";
             this.opcion.Size = new System.Drawing.Size(50, 36);
@@ -279,7 +279,7 @@
             // 
             // Raiz
             // 
-            this.Raiz.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Raiz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Raiz.Location = new System.Drawing.Point(189, 143);
             this.Raiz.Name = "Raiz";
             this.Raiz.Size = new System.Drawing.Size(50, 36);
@@ -290,7 +290,7 @@
             // 
             // Porc
             // 
-            this.Porc.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Porc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Porc.Location = new System.Drawing.Point(133, 143);
             this.Porc.Name = "Porc";
             this.Porc.Size = new System.Drawing.Size(50, 36);
@@ -301,7 +301,7 @@
             // 
             // Par_izq
             // 
-            this.Par_izq.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Par_izq.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Par_izq.Location = new System.Drawing.Point(77, 143);
             this.Par_izq.Name = "Par_izq";
             this.Par_izq.Size = new System.Drawing.Size(50, 36);
@@ -312,7 +312,7 @@
             // 
             // Par_der
             // 
-            this.Par_der.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Par_der.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Par_der.Location = new System.Drawing.Point(21, 143);
             this.Par_der.Name = "Par_der";
             this.Par_der.Size = new System.Drawing.Size(50, 36);
@@ -324,10 +324,10 @@
             // Cerrar
             // 
             this.Cerrar.AutoSize = true;
-            this.Cerrar.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Cerrar.Location = new System.Drawing.Point(2, 9);
             this.Cerrar.Name = "Cerrar";
-            this.Cerrar.Size = new System.Drawing.Size(16, 18);
+            this.Cerrar.Size = new System.Drawing.Size(16, 20);
             this.Cerrar.TabIndex = 26;
             this.Cerrar.Text = "x";
             this.Cerrar.Click += new System.EventHandler(this.label1_Click);
@@ -335,10 +335,10 @@
             // Volver
             // 
             this.Volver.AutoSize = true;
-            this.Volver.Font = new System.Drawing.Font("Modern No. 20", 12F);
+            this.Volver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Volver.Location = new System.Drawing.Point(18, 9);
             this.Volver.Name = "Volver";
-            this.Volver.Size = new System.Drawing.Size(13, 18);
+            this.Volver.Size = new System.Drawing.Size(18, 20);
             this.Volver.TabIndex = 27;
             this.Volver.Text = "<";
             this.Volver.Click += new System.EventHandler(this.label2_Click);
@@ -377,6 +377,7 @@
             this.Name = "Calculadora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculadora";
+            this.Load += new System.EventHandler(this.Calculadora_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Calculadora_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
