@@ -1,0 +1,45 @@
+Aquí esta como yo he hecho los voids de operaciones
+private void ProcessTMAR()
+        {
+            int valorInflacion;
+            int valorRiesgo;
+            if (Cambio == 1)
+            {
+                // Estado 1: Confirma la Tasa de Inflación
+                if (int.TryParse(Pantalla.Text, out valorInflacion))
+                {
+                    TasaInfl = valorInflacion;
+                    Cambio = 2; // Pasa al siguiente estado: Ingresar Riesgo
+                    Pantalla.Text = "Ingrese Riesgo de Inversión:";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese la Tasa de Inflación:";
+                }
+            }
+            else if (Cambio == 2)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (int.TryParse(Pantalla.Text, out valorRiesgo))
+                {
+                    RiesgoInv = valorRiesgo;
+
+                    // Cálculo de la TMAR
+                    int TMAR = TasaInfl + RiesgoInv;
+
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(TMAR);
+
+                    // Regresar al modo normal de calculadora
+                    Cambio = 0;
+                    TasaInfl = 0;
+                    RiesgoInv = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Riesgo de Inversión:";
+                }
+            }
+        }
