@@ -1,0 +1,1071 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+namespace Calculadora_cientifica
+{
+    public partial class Calculadora : Form
+    {
+        bool menu = false;
+        private int Cambio = 0;
+        //TMAR
+        int TasaInfl = 0;
+        int RiesgoInv = 0;
+        //Flujo de Efectivo
+        double Ingresos = 0;
+        double Egresos = 0;
+        int Periodo = 0;
+        int PeriodoActual = 0;
+        //Renta
+        double PagoRent = 0;
+        double TasaInt = 0;
+        //Regimen de Capital
+        double CostoIni = 0;
+
+        double PrecioUnitario = 0;
+        double CantidadVendida = 0;
+        double Gastos = 0;
+        double CostosFijos = 0;
+        double CostoVariableUnitario = 0;
+        double BeneficioNeto = 0;
+        double CostoUnitario = 0;
+        double MargenNominal = 0; // Mgn
+        double FrecuenciaCapitalizacion = 0; // m (para Tasa Efectiva)
+        double TasaNominal = 0; // i_nominal
+        double TasaContinua = 0;
+        double CapReal = 0;
+        double CapEfecDis;
+        double IngTo;
+        double PrecVentUnit;
+
+        public Calculadora()
+        {
+            InitializeComponent();
+        }
+
+        private void one_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void two_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void three_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void Four_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void Five_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void Six_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void Seven_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void Eight_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void nine_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void Zero_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void punto_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void button1_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+        private void button2_Click(object sender, EventArgs e) { NumButton_Click(sender, e); }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Par_der_Click(object sender, EventArgs e)
+        {
+            if (!menu) Pantalla.Text += "(";
+        }
+
+        private void Par_izq_Click(object sender, EventArgs e)
+        {
+            if (!menu) Pantalla.Text += ")";
+        }
+
+        private void Porc_Click(object sender, EventArgs e)
+        {
+            if (!menu) Pantalla.Text += "%";
+        }
+
+        private void Raiz_Click(object sender, EventArgs e)
+        {
+            if (!menu) Pantalla.Text += "√";
+        }
+
+        private void By_Click(object sender, EventArgs e)
+        {
+            if (!menu) Pantalla.Text += "*";
+        }
+
+        private void Divide_Click(object sender, EventArgs e)
+        {
+            if (!menu) Pantalla.Text += "/";
+        }
+
+        private void plus_Click(object sender, EventArgs e)
+        {
+            if (!menu) Pantalla.Text += "+";
+        }
+
+        private void Rest_Click(object sender, EventArgs e)
+        {
+            if (!menu) Pantalla.Text += "-";
+        }
+
+
+        private void Equal_Click(object sender, EventArgs e)
+        {
+            if (menu)
+            {
+                // Evita calcular si el usuario está en el menú
+                MessageBox.Show("Presione un número para seleccionar una opción del menú.", "Modo Menú Activo");
+                return;
+            }
+
+            if (Cambio != 0)
+            {
+                if (Cambio == 1 || Cambio == 2) { ProcessTMAR(); return; }
+                else if (Cambio >= 3 && Cambio <= 5) { ProcessFlujEfec(); return; }
+                else if (Cambio >= 6 && Cambio <= 8) { ProcessRenta(); return; }
+                else if (Cambio >= 9 && Cambio <= 11) { ProcessRegCap(); return; }
+                else if (Cambio >= 12 && Cambio <= 13) { ProcessIngTotal(); return; }
+                else if (Cambio >= 14 && Cambio <= 15) { ProcessIngresNetOp(); return; } // Ingreso Neto
+                else if (Cambio >= 18 && Cambio <= 20) { ProcessPuntEq(); return; }
+                else if (Cambio >= 21 && Cambio <= 23) { ProcessMBNet(); return; }
+                else if (Cambio >= 24 && Cambio <= 25) { ProcessPrecVent(); return; }
+                else if (Cambio >= 27 && Cambio <= 28) { ProcessTasEfectAn(); return; }
+                else if (Cambio == 30) { ProcessTasIntCont(); return; }
+            }
+
+            String Calcular = Pantalla.Text;
+            Calcular = Calcular.Replace(",", ".");//Esto evita que cuando
+            try
+            {
+
+                DataTable proceso = new DataTable();
+                var resultado = proceso.Compute(Calcular, null);//Aquí se realiza la operación que se guardo en la variable Calcular, que es lo que aparece en la Pantalla
+                Pantalla.Text = resultado.ToString();
+            }
+            catch
+            {
+                Pantalla.Text = "ERROR";
+            }
+        }
+
+        private void Del_Total_Click(object sender, EventArgs e)
+        {
+            Pantalla.Text = string.Empty;
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            if (Pantalla.Text.Length > 0)
+            {
+                String op_actual = Pantalla.Text;
+                Pantalla.Text = op_actual.Substring(0, op_actual.Length - 1);
+            }
+        }
+
+        private void Calculadora_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ',')
+            {
+                e.Handled = true;
+                Pantalla.Text = ".";
+                Pantalla.SelectionStart = Pantalla.Text.Length;
+            }
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            Menú menu = new Menú();
+            menu.Show();
+            this.Hide();
+        }
+
+        private void Pantalla_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void opcion_Click(object sender, EventArgs e)
+        {
+            MostrarMenuOpciones();
+        }
+
+        void ProcesoOpc(string OpcSeleccioada)
+        {
+            menu = false;
+            switch (OpcSeleccioada)
+            {
+                case "1":
+                    Cambio = 1;
+                    Pantalla.Text = "Ingrese la Tasa de Inflación:";
+                    break;
+                case "2":
+                    Cambio = 3;
+                    Pantalla.Text = "Ingrese Periodo:";
+                    break;
+                case "3":
+                    Cambio = 6;
+                    Pantalla.Text = "Ingrese Periodo:";
+                    break;
+                case "4":
+                    Cambio = 9;
+                    Pantalla.Text = "Ingrese Periodo:";
+                    break;
+                 case "5":
+                    Cambio = 12; // Ingreso Total / Bruto: Ingrese Precio Unitario
+                    Pantalla.Text = "Ingrese Precio Unitario (PU):";
+                     break;
+                 case "6":
+                    Cambio = 14; // Ingreso Neto: Ingrese Ingreso Bruto
+                Pantalla.Text = "Ingrese Ingreso Bruto (IB):";
+                     break;
+                 case "7":
+                    Cambio = 18; // Punto de Equilibrio: Ingrese Costos Fijos
+                    Pantalla.Text = "Ingrese Costos Fijos (CF):";
+                    break;
+                 case "8":
+                    Cambio = 22; // Margen de Beneficio Neto: Ingrese Beneficio Neto
+                    Pantalla.Text = "Ingrese Beneficio Neto (BN):";
+                     break;
+                 case "9":
+                    Cambio = 24; // Precio de Venta: Ingrese Costo Unitario
+                    Pantalla.Text = "Ingrese Costo Unitario (CU):";
+                     break;
+                case "0":
+                    break;
+                case "A": // Tasa Efectiva Anual (Opción 10)
+                    Cambio = 27; 
+                    Pantalla.Text = "Ingrese Tasa Nominal (i_nominal en %):";
+                    break;
+                case "B": // Tasa de Interés Activa para la Capitalización Continua (Opción 11)
+                    Cambio = 30; 
+                    Pantalla.Text = "Ingrese Tasa de Interés (r en %):";
+                    break;
+
+            }
+        }
+
+        private void NumButton_Click(object sender, EventArgs e)
+        {
+            Button num = sender as Button;
+            if (num == null) return;
+
+            string ValorBoton = num.Text;
+
+            if (menu)
+            {
+                // Si estamos en el modo menú, el número presionado es la opción
+                ProcesoOpc(ValorBoton);
+            }
+            else if (Cambio != 0) 
+            {
+                
+                string TextPeriodo = "Ingrese Periodo:";
+                string TextIng = "Ingrese los Ingresos de la Empresa:";
+                string TextEgr = "Ingrese los Egresos de la Empresa:";
+                string TextTasa = "Ingrese la Tasa de Inflación:";
+                string TextRiesgo = "Ingrese Riesgo de Inversión:";
+                string TextPago = "Ingrese el Pago de Renta:";
+                string TextInt = "Ingrese la Tasa de interes:";
+                string TextCo = "Ingrese el Costo inicial:";
+                string TextPU = "Ingrese Precio Unitario (PU):";
+                string TextCV = "Ingrese Cantidad Vendida (CV):";
+                string TextIB = "Ingrese Ingreso Bruto (IB):";
+                string TextGastos = "Ingrese Gastos:";
+                string TextPVU = "Ingrese Precio de Venta Unitario (PVU):";
+                string TextCF = "Ingrese Costos Fijos (CF):";
+                string TextCVU = "Ingrese Costo Variable Unitario (CVU):";
+                string TextBN = "Ingrese Beneficio Neto (BN):";
+                string TextIT = "Ingrese Ingresos Totales (IT):";
+                string TextCU = "Ingrese Costo Unitario (CU):";
+                string TextMGN = "Ingrese Margen de Beneficio Nominal (Mgn en %):";
+                string TextiNominal = "Ingrese Tasa Nominal (i_nominal en %):";
+                string Textm = "Ingrese Frecuencia de Capitalización (m):";
+                string Textr = "Ingrese Tasa de Interés (r en %):";
+
+
+                string currentPrompt = "";
+
+                if (Cambio == 1) currentPrompt = TextTasa;
+                else if (Cambio == 2) currentPrompt = TextRiesgo;
+                else if (Cambio == 3 || Cambio == 6 || Cambio == 9) currentPrompt = TextPeriodo;
+                else if (Cambio == 4) currentPrompt = TextIng;
+                else if (Cambio == 5) currentPrompt = TextEgr;
+                else if (Cambio == 7) currentPrompt = TextPago;
+                else if (Cambio == 8 | Cambio == 10) currentPrompt = TextInt;
+                else if (Cambio == 11) currentPrompt = TextCo;
+                else if (Cambio == 12) currentPrompt = TextPU;
+                else if (Cambio == 13) currentPrompt = TextCV;
+                else if (Cambio == 14) currentPrompt = TextIB;
+                else if (Cambio == 15) currentPrompt = TextGastos;
+                else if (Cambio == 18) currentPrompt = TextCF;
+                else if (Cambio == 19) currentPrompt = TextPVU;
+                else if (Cambio == 20) currentPrompt = TextCVU;
+                else if (Cambio == 21) currentPrompt = TextCV; // Punto de equilibrio requiere Cantidad Vendida (PE)
+                else if (Cambio == 22) currentPrompt = TextBN;
+                else if (Cambio == 23) currentPrompt = TextIT;
+                else if (Cambio == 24) currentPrompt = TextCU;
+                else if (Cambio == 25) currentPrompt = TextMGN;
+                else if (Cambio == 26) currentPrompt = TextCU; // Para mostrar CU de nuevo
+                else if (Cambio == 27) currentPrompt = TextiNominal;
+                else if (Cambio == 28) currentPrompt = Textm;
+                else if (Cambio == 30) currentPrompt = Textr;
+
+                // Si el texto actual comienza con el prompt, lo limpiamos al iniciar la entrada
+                if (Pantalla.Text.StartsWith(currentPrompt))
+                {
+                    // Limpia la pantalla al presionar el primer número para eliminar el prompt
+                    if (Pantalla.Text.Length < currentPrompt.Length + 2)
+                    {
+                        Pantalla.Text = "";
+                    }
+                }
+
+                // Añadir el valor del botón
+                if (ValorBoton == "." && Pantalla.Text.Contains("."))
+                {
+                    return; // Evita múltiples puntos decimales
+                }
+                Pantalla.Text += ValorBoton;
+            }
+            else
+            {
+                // Si estamos en el modo normal
+                if (Pantalla.Text == "0" && ValorBoton != ".")
+                {
+                    Pantalla.Text = ValorBoton;
+                }
+                else
+                {
+                    Pantalla.Text += ValorBoton;
+                }
+            }
+        }
+
+
+        private void MostrarMenuOpciones()
+        {
+            menu = true;
+            Pantalla.Text = "MENU DE OPCIONES:\n" + Environment.NewLine;
+            Pantalla.Text += "1. TMAR" + Environment.NewLine;
+            Pantalla.Text += "2. Flujo de efectivo" + Environment.NewLine;
+            Pantalla.Text += "3. Renta" + Environment.NewLine;
+            Pantalla.Text += "4. Regimen de Capitalizacion" + Environment.NewLine;
+            Pantalla.Text += "6. Ingreso Neto / Operacional" + Environment.NewLine; // Combinada
+            Pantalla.Text += "7. Punto de Equilibrio" + Environment.NewLine;
+            Pantalla.Text += "8. Margen de Beneficio Neto" + Environment.NewLine;
+            Pantalla.Text += "9. Precio de Venta (Margen Nominal)" + Environment.NewLine;
+            Pantalla.Text += "0. Volver a Calculadora" + Environment.NewLine;
+        }
+
+        private void ProcessTMAR()
+        {
+            int valorInflacion; 
+            int valorRiesgo;
+            if (Cambio == 1)
+            {
+                // Estado 1: Confirma la Tasa de Inflación
+                if (int.TryParse(Pantalla.Text, out valorInflacion))
+                {
+                    TasaInfl = valorInflacion;
+                    Cambio = 2; // Pasa al siguiente estado: Ingresar Riesgo
+                    Pantalla.Text = "Ingrese Riesgo de Inversión:";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese la Tasa de Inflación:"; 
+                }
+            }
+            else if (Cambio == 2)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (int.TryParse(Pantalla.Text, out valorRiesgo))
+                {
+                    RiesgoInv = valorRiesgo;
+                    
+                    // Cálculo de la TMAR
+                    int TMAR = TasaInfl + RiesgoInv;
+                    
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(TMAR) ;
+                    
+                    // Regresar al modo normal de calculadora
+                    Cambio = 0; 
+                    TasaInfl = 0;
+                    RiesgoInv = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Riesgo de Inversión:";
+                }
+            }
+        }
+
+        void ProcessFlujEfec()
+        {            
+            double Valor;
+            int ValorPeriodo;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 3)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (int.TryParse(cleanText, out ValorPeriodo) && ValorPeriodo >= 0)
+                {
+                    Periodo = ValorPeriodo;
+                    Cambio = 4; // Mover a Ingresos
+                    Pantalla.Text = "Ingrese los Ingresos de la Empresa:";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese el Periodo: ";
+                }
+                return;
+            }
+            else if (Cambio == 4)
+                {
+                        // Estado 2: Confirma el Riesgo de Inversión
+                        if (isNumeric)
+                        {
+                            Ingresos = Valor;
+                            
+                            Cambio = 5; // Pasa al siguiente estado: Ingresar Riesgo
+                            Pantalla.Text = "Ingrese los Egresos de la Empresa:";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                            Pantalla.Text = "Ingrese el Periodo:";
+                        }
+                        return;  
+                    
+                }
+                
+                else if (Cambio == 5)
+                {
+                    // Estado 2: Confirma el Riesgo de Inversión
+                    if (isNumeric)
+                    {
+                        Egresos = Valor;
+
+                        // Cálculo de Flujo de Efectivo
+                        double FlujoEfect = Ingresos - Egresos;
+
+                        // Muestra el resultado final
+                        
+                        Ingresos = 0;
+                        Egresos = 0;
+                       
+                        if (PeriodoActual < Periodo)
+                        {
+                            Pantalla.Text = "Flujo de Efectivo del Periodo " + Convert.ToString(PeriodoActual) + ": " + Convert.ToString(FlujoEfect) + "$" + Environment.NewLine;
+                            Pantalla.Text += "Ingrese los Ingresos de la Empresa:";
+                            PeriodoActual++;
+                            Cambio = 4;                           
+                            
+                        }
+                        else
+                        {                            
+                            Cambio = 0;
+                            Periodo = 0;
+                            PeriodoActual = 1;
+                        }
+
+                        // Regresar al modo normal de calculadora
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                        Pantalla.Text = "Ingrese Riesgo de Inversión:";
+                    }
+                                    
+            }
+        }
+
+        void ProcessRenta()
+        {
+            double Valor;
+            int ValorPeriodo;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 6)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (int.TryParse(cleanText, out ValorPeriodo) && ValorPeriodo >= 0)
+                {
+                    Periodo = ValorPeriodo;
+                    Cambio = 7; // Mover a Ingresos
+                    Pantalla.Text = "Ingrese el Pago de Renta:";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese el Periodo:";
+                }
+                return;
+            }
+            else if (Cambio == 7)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    
+                    PagoRent = Valor;
+
+                    Cambio = 8; // Pasa al siguiente estado: Ingresar Riesgo
+                    Pantalla.Text = "Ingrese la Tasa de interes:";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese el Pago de Renta:";
+                }
+                return;
+
+            }
+
+            else if (Cambio == 8)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    double tasaPorcentual = Valor;
+
+                    TasaInt = tasaPorcentual / 100.0;
+                    if (TasaInt == 0)
+                    {
+                        MessageBox.Show("La tasa de interés no puede ser cero.", "Error de Cálculo");
+                        Pantalla.Text = "Ingrese la Tasa de interes:";
+                        return;
+                    }
+                   
+
+                    // Cálculo de Flujo de Efectivo
+                    double Factor =(1 - Math.Pow(1 + TasaInt, -Periodo))/ TasaInt;
+                   double Renta = PagoRent * Factor;
+
+                    // Muestra el resultado final
+                   Pantalla.Text = Convert.ToString(Renta);
+                    TasaInt = 0;
+                    PagoRent = 0;
+                    Cambio = 0;
+                    Periodo = 0;
+                        
+                    
+
+                    // Regresar al modo normal de calculadora
+
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese la Tasa de interes:";
+                }
+
+            }
+        }
+
+        void ProcessIngTotal()
+        {
+            double Valor;
+            double ValorPIng;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 12)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (double.TryParse(cleanText, out ValorPIng) && ValorPIng >= 0)
+                {
+                    PrecioUnitario = ValorPIng;
+                    Cambio = 13; // Mover a Ingresos
+                    Pantalla.Text = "Ingrese Cantidad Vendida (CV):";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Precio Unitario (PU):";
+                }
+                return;
+            }
+            
+            else if (Cambio == 13)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    CantidadVendida = Valor;                                 
+
+                    double  IngTotal = CantidadVendida * PrecioUnitario;
+
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(IngTotal);
+                    CantidadVendida = 0;
+                    PrecioUnitario = 0;
+                    Cambio = 0;
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Cantidad Vendida (CV):";
+                }
+
+            }
+        }
+
+        void ProcessRegCap()
+        {
+            double Valor;
+            int ValorPeriodo;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 9)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (int.TryParse(cleanText, out ValorPeriodo) && ValorPeriodo >= 0)
+                {
+                    Periodo = ValorPeriodo;
+                    Cambio = 10; // Mover a Ingresos
+                    Pantalla.Text = "Ingrese la Tasa de interes:";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese el Periodo:";
+                }
+                return;
+            }
+            else if (Cambio == 10)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    double tasaPorcentual = Valor;
+
+                    TasaInt = tasaPorcentual / 100.0;
+                    if (TasaInt == 0)
+                    {
+                        MessageBox.Show("La tasa de interés no puede ser cero.", "Error de Cálculo");
+                        Pantalla.Text = "Ingrese la Tasa de interes en enteros:";
+                        return;
+                    }
+                    Cambio = 11; // Mover a Ingresos
+                    Pantalla.Text = "Ingrese el Costo inicial:";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese el Costo inicial:";
+                }
+                return;
+
+            }
+
+            else if (Cambio == 11)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    CostoIni = Valor;
+
+
+
+                    double Factor = Math.Pow(1 + TasaInt, Periodo);
+                    double CostoFi = CostoIni * Factor;
+
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(CostoFi);
+                    TasaInt = 0;
+                    CostoIni = 0;
+                    Cambio = 0;
+                    Periodo = 0;
+
+
+
+                    // Regresar al modo normal de calculadora
+
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese el Costo inicial:";
+                }
+
+            }
+        }
+
+        void ProcessUtEf()
+        {
+            double Valor;
+            double ValorPIng;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 12)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (double.TryParse(cleanText, out ValorPIng) && ValorPIng >= 0)
+                {
+                    CapReal = ValorPIng;
+                    Cambio = 10; // Mover a Ingresos
+                    Pantalla.Text = "Ingrese Cantidad Vendida (CV):";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Precio Unitario (PU):";
+                }
+                return;
+            }
+            
+            else if (Cambio == 11)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    CapEfecDis = Valor;
+                                       
+                    double UtEf = CapReal/CapEfecDis;
+
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(UtEf);
+                    CapReal = 0;
+                    CapEfecDis = 0;
+                    Cambio = 0;
+                    
+
+
+
+                    // Regresar al modo normal de calculadora
+
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese el Costo inicial:";
+                }
+
+            }
+        }
+
+        void ProcessIngresNetOp()
+        {
+            double Valor;
+            double ValorPIng;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 14)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (double.TryParse(cleanText, out ValorPIng) && ValorPIng >= 0)
+                {
+                    Ingresos = ValorPIng;
+                    Cambio = 15; // Mover a Ingresos
+                    Pantalla.Text = "Ingrese Gastos:";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Ingreso Bruto (IB):";
+                }
+                return;
+            }
+
+            else if (Cambio == 15)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    Gastos = Valor;
+
+                    double IngNetOP = Ingresos - Gastos;
+
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(IngNetOP);
+                    Ingresos = 0;
+                    Gastos = 0;
+                    Cambio = 0;
+                   
+                    // Regresar al modo normal de calculadora
+
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Gastos:";
+                }
+
+            }
+        }
+        void ProcessPuntEq()
+        {
+            double Valor;
+            double ValorCost;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 18)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (double.TryParse(cleanText, out ValorCost) && ValorCost >= 0)
+                {
+                    CostosFijos = ValorCost;
+                    Cambio = 19; // Mover a Ingresos
+                    Pantalla.Text = "Ingrese Precio de Venta Unitario (PVU):";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Costos Fijos (CF):";
+                }
+                return;
+            }
+            else if (Cambio == 19)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+
+                    PrecVentUnit = Valor;
+
+                    Cambio = 20; // Pasa al siguiente estado: Ingresar Riesgo
+                    Pantalla.Text = "Ingrese Costo Variable Unitario (CVU):";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Precio de Venta Unitario (PVU):";
+                }
+                return;
+
+            }
+
+            else if (Cambio == 20)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    CostoVariableUnitario = Valor;
+
+
+                    
+                    // Cálculo de Flujo de Efectivo
+                    double Puntequ = CostosFijos / (PrecVentUnit - CostoVariableUnitario);
+
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(Puntequ);
+                    TasaInt = 0;
+                    PagoRent = 0;
+                    Cambio = 0;
+                    Periodo = 0;
+
+
+
+                    // Regresar al modo normal de calculadora
+
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese la Tasa de interes:";
+                }
+
+            }
+        }
+        void ProcessMBNet()
+        {
+            double Valor;
+            double ValorPIng;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 22)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (double.TryParse(cleanText, out ValorPIng) && ValorPIng >= 0)
+                {
+                    BeneficioNeto = ValorPIng;
+                    Cambio = 23; // Mover a Ingresos
+                    Pantalla.Text = "Ingrese Ingresos Totales (IT):";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Beneficio Neto (BN):";
+                }
+                return;
+            }
+
+            else if (Cambio == 23)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    IngTo = Valor;
+
+                    double Mb = (BeneficioNeto/IngTo)*100;
+
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(Mb);
+                    TasaInt = 0;
+                    CostoIni = 0;
+                    Cambio = 0;
+                    Periodo = 0;
+
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Ingresos Totales (IT):";
+                }
+
+            }
+        }
+                       
+        void ProcessPrecVent()
+        {
+            double Valor;
+            double ValorPIng;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 24)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (double.TryParse(cleanText, out ValorPIng) && ValorPIng >= 0)
+                {
+                    CostoUnitario = ValorPIng;
+                    Cambio = 25; // Mover a Ingresos
+                    Pantalla.Text = "Ingrese Margen de Beneficio Nominal (Mgn en %):";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese el Periodo:";
+                }
+                return;
+            }
+
+            else if (Cambio == 25)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    MargenNominal = Valor/100;
+
+                    double PrecVent = CostoUnitario * (1 + MargenNominal);
+
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(PrecVent);
+                    CostoUnitario = 0;
+                    MargenNominal = 0;
+                    Cambio = 0;
+
+
+
+
+                    // Regresar al modo normal de calculadora
+
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Margen de Beneficio Nominal (Mgn en %):";
+                }
+
+            }
+        }
+
+        void ProcessTasEfectAn()
+        {
+            double Valor;
+            double ValorPIng;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 27)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (double.TryParse(cleanText, out ValorPIng) && ValorPIng >= 0)
+                {
+                    TasaNominal = ValorPIng/100;
+                    Cambio = 28;
+                    Pantalla.Text = "Ingrese Frecuencia de Capitalización (m):";
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Tasa Nominal (i_nominal en %):";
+                }
+                return;
+            }
+
+            else if (Cambio == 28)
+            {
+                // Estado 2: Confirma el Riesgo de Inversión
+                if (isNumeric)
+                {
+                    FrecuenciaCapitalizacion = Valor;
+
+                    double baseCalc = 1 + (TasaNominal / FrecuenciaCapitalizacion);
+                    double i_efectiva = Math.Pow(baseCalc, FrecuenciaCapitalizacion) - 1;
+
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(i_efectiva);
+                    TasaNominal = 0;
+                    FrecuenciaCapitalizacion = 0;
+                    Cambio = 0;
+
+
+
+
+                    // Regresar al modo normal de calculadora
+
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Frecuencia de Capitalización (m):";
+                }
+
+            }
+        }
+
+        void ProcessTasIntCont()
+        {
+            double Valor;
+            double ValorPIng;
+            bool isNumeric = double.TryParse(Pantalla.Text.Replace(" ", "").Replace(",", "."), out Valor);
+            if (Cambio == 30)
+            {
+                string cleanText = Pantalla.Text.Replace(" ", "").Replace(",", "").Replace(".", "");
+
+                if (double.TryParse(cleanText, out ValorPIng) && ValorPIng >= 0)
+                {
+                    TasaContinua = ValorPIng / 100;
+
+                    double i = Math.Exp(TasaContinua)-1;
+                   
+
+                    // Muestra el resultado final
+                    Pantalla.Text = Convert.ToString(i);
+                    TasaNominal = 0;
+                    FrecuenciaCapitalizacion = 0;
+                    Cambio = 0;
+
+                    // Regresar al modo normal de calculadora
+
+                }
+                else
+                {
+                    MessageBox.Show("Valor no válido. Ingrese un número entero.", "Error de Entrada");
+                    Pantalla.Text = "Ingrese Tasa de Interés (r en %):";
+                }
+
+            }
+        }
+
+       
+    }
+}
+
