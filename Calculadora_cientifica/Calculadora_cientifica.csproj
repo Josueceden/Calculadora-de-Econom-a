@@ -51,11 +51,9 @@
     <Compile Include="Calculadora.Designer.cs">
       <DependentUpon>Calculadora.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menú.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menú.Designer.cs">
-      <DependentUpon>Menú.cs</DependentUpon>
+    <Compile Include="FormulasFinancieras.cs" />
+    <Compile Include="FormulasFinancieras.Designer.cs">
+      <DependentUpon>FormulasFinancieras.cs</DependentUpon>
     </Compile>
     <Compile Include="Información.cs">
       <SubType>Form</SubType>
@@ -68,8 +66,8 @@
     <EmbeddedResource Include="Calculadora.resx">
       <DependentUpon>Calculadora.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menú.resx">
-      <DependentUpon>Menú.cs</DependentUpon>
+    <EmbeddedResource Include="FormulasFinancieras.resx">
+      <DependentUpon>FormulasFinancieras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Información.resx">
       <DependentUpon>Información.cs</DependentUpon>

@@ -22,3 +22,53 @@ C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Deb
 C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.CoreCompileInputs.cache
 C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.exe
 C:\Users\joseg\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.pdb
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe.config
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.pdb
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.AssemblyReference.cache
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Calculadora.resources
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Información.resources
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Properties.Resources.resources
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.GenerateResource.cache
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.CoreCompileInputs.cache
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.exe
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.pdb
+C:\Users\joseg\OneDrive\Escritorio\Proyectos - C#\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.FormulasFinancieras.resources
+D:\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe.config
+D:\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe
+D:\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.pdb
+D:\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.AssemblyReference.cache
+D:\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.exe.config
+D:\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Calculadora.resources
+D:\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.FormulasFinancieras.resources
+D:\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Información.resources
+D:\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Properties.Resources.resources
+D:\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.GenerateResource.cache
+D:\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.CoreCompileInputs.cache
+D:\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.exe
+D:\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.pdb
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe.config
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.pdb
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.AssemblyReference.cache
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.exe.config
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Calculadora.resources
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.FormulasFinancieras.resources
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Información.resources
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Properties.Resources.resources
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.GenerateResource.cache
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.CoreCompileInputs.cache
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.exe
+C:\Users\joseg\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.pdb
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe.config
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.exe
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\bin\Debug\Calculadora_cientifica.pdb
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.AssemblyReference.cache
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Calculadora.resources
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.FormulasFinancieras.resources
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Información.resources
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.Properties.Resources.resources
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.GenerateResource.cache
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.csproj.CoreCompileInputs.cache
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.exe
+C:\Users\joseg\OneDrive\Escritorio\Econom-a\Calculadora_cientifica\obj\Debug\Calculadora_cientifica.pdb
